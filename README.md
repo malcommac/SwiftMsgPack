@@ -31,6 +31,7 @@ Take a look here:
 * **[How to use](#howto)**
 * **[Supported Types](#supportedtypes)**
 * **[Installation (CocoaPods, SwiftPM and Carthage)](#installation)**
+* **[Tests](#tests)**
 * **[Requirements](#requirements)**
 * **[Credits](#credits)**
 
@@ -38,7 +39,7 @@ Take a look here:
 
 ## Current Release
 
-Latest release is: 0.9.0 [Download here](https://github.com/malcommac/SwiftMsgPack/releases/tag/0.9.0).
+Latest release is: 0.9.1 [Download here](https://github.com/malcommac/SwiftMsgPack/releases/tag/0.9.1).
 A complete list of changes for each release is available in the [CHANGELOG](CHANGELOG.md) file.
 
 <a name="howto" />
@@ -121,11 +122,19 @@ Add swiftline as dependency in your `Package.swift`
   )
 ```
 
+<a name="tests" />
+
+## Tests
+
+SwiftMsgPack has an extensive coverage using XCTest.
+You can found a complete list of tests inside `Tests/SwiftMsgPackTests` folder.
+Tests can also be runned with XCode using the SwiftMsgPack project.
+
 <a name="requirements" />
 
 ## Requirements
 
-Current version is compatible **only with 64-BIT architectures** with:
+Current version is compatible with:
 
 * Swift 3.0+
 * iOS 9.0 or later
