@@ -34,12 +34,6 @@
 import XCTest
 @testable import SwiftMsgPack
 
-//extension Data {
-//	func hexEncodedString() -> String {
-//		return map { String(format: "%02hhx", $0) }.joined()
-//	}
-//}
-
 class SwiftMsgPackTests_Numeric: XCTestCase {
 	
 	override func setUp() {
@@ -77,9 +71,14 @@ class SwiftMsgPackTests_Numeric: XCTestCase {
 	
 	func testUInt16() {
 		performTestUInt16(name: "Test UInt16 #1", value: UInt16(0), expected: [0])
-		performTestUInt16(name: "Test UInt16 #2", value: UInt16.max, expected: [0xcd, 0xff, 0xff])
-		performTestUInt16(name: "Test UInt16 #3", value: UInt16(Int16.max) + 1, expected: [0xcd, 0x80, 0x0])
-		performTestUInt16(name: "Test UInt16 #4", value: UInt16(UInt8.max), expected: [0xcc, UInt8.max])
+		performTestUInt16(name: "Test UInt16 #2", value: UInt16(0x7f), expected: [0x7f])
+		performTestUInt16(name: "Test UInt16 #3", value: UInt16(0x80), expected: [0xcc, 0x80])
+		performTestUInt16(name: "Test UInt16 #4", value: UInt16.max, expected: [0xcd, 0xff, 0xff])
+		performTestUInt16(name: "Test UInt16 #5", value: UInt16(Int16.max) + 1, expected: [0xcd, 0x80, 0x0])
+		performTestUInt16(name: "Test UInt16 #6", value: UInt16(UInt8.max), expected: [0xcc, UInt8.max])
+		performTestUInt16(name: "Test UInt16 #7", value: UInt16(UInt8.max) + 1, expected: [0xcd, 0x01, 0x0])
+		performTestUInt16(name: "Test UInt16 #8", value: UInt16(Int16.max) - 1, expected: [0xcd, 0x7f, 0xfe])
+		performTestUInt16(name: "Test UInt16 #9", value: UInt16(Int16.max), expected: [0xcd, 0x7f, 0xff])
 	}
 	
 	// MARK: - Int16
