@@ -83,7 +83,7 @@ class SwiftMsgPackTests_Numeric: XCTestCase {
 		performTestInt16(name: "Test Int16 #1", value: Int16.min, expected: [0xd1, 0x80, 0])
 		performTestInt16(name: "Test Int16 #2", value: Int16(-33), expected:  [0xd0, 0xdf])
 		performTestInt16(name: "Test Int16 #3", value: Int16(0), expected: [0])
-		performTestInt16(name: "Test Int16 #4", value: Int16(Int8.max - 1), expected: [0xd1, 0x80, 0])
+		performTestInt16(name: "Test Int16 #4", value: Int16(Int8.max - 1), expected: [0x7e])
 	}
 	
 	// MARK: - UInt32
