@@ -29,6 +29,7 @@ Take a look here:
 ## Index
 * **[Current Release](#release)**
 * **[How to use](#howto)**
+* **[Supported Types](#supportedtypes)**
 * **[Installation (CocoaPods, SwiftPM and Carthage)](#installation)**
 * **[Requirements](#requirements)**
 * **[Credits](#credits)**
@@ -42,9 +43,7 @@ A complete list of changes for each release is available in the [CHANGELOG](CHAN
 
 <a name="howto" />
 
-## How to use
-
-### One-shot pack & unpack
+## How to use: one-shot pack & unpack
 
 Both serialization and deseralization happens inside a `Data` object.
 
@@ -73,6 +72,29 @@ do {
 	print("Something went wrong while unpacking data: \(error)")	
 }
 ```
+
+<a name="supportedtypes" />
+
+## Supported Types
+
+SwiftMsgPack supports the following Swift types:
+- `String`
+- `Data`
+- `Bool`
+- `nil`
+- Numeric values: `Int` & `UInt` (`UInt8`,`Int8`,`UInt16`,`Int16`,`UInt32`,`Int32`,`UInt64`,`Int64`), `Float` and `Double`
+- `Dictionaries` (`[AnyHashable:Any?]`)
+- `Array` (`[Any?]`)
+
+The following limitations are specified by [MsgPack specs format](https://github.com/msgpack/msgpack/blob/master/spec.md#types-limitation):
+
+* a value of an Integer object is limited from `-(2^63)` upto `(2^64)-1`
+* maximum length of a Binary object is `(2^32)-1`
+* maximum byte size of a String object is `(2^32)-1`
+* String objects may contain invalid byte sequence and the behavior of a deserializer depends on the actual implementation when it received invalid byte sequence
+    * Deserializers should provide functionality to get the original byte array so that applications can decide how to handle the object
+* maximum number of elements of an Array object is `(2^32)-1`
+* maximum number of key-value associations of a Map object is `(2^32)-1`
 
 <a name="installation" />
 
