@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0825C1D71E630FBA00D0CC70 /* SwiftMsgPack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0825C1CD1E630FBA00D0CC70 /* SwiftMsgPack.framework */; };
-		0825C1DC1E630FBA00D0CC70 /* SwiftMsgPackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0825C1DB1E630FBA00D0CC70 /* SwiftMsgPackTests.swift */; };
+		0825C1DC1E630FBA00D0CC70 /* SwiftMsgPackTests_Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0825C1DB1E630FBA00D0CC70 /* SwiftMsgPackTests_Strings.swift */; };
 		0825C1DE1E630FBA00D0CC70 /* SwiftMsgPack.h in Headers */ = {isa = PBXBuildFile; fileRef = 0825C1D01E630FBA00D0CC70 /* SwiftMsgPack.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0825C1EB1E630FEB00D0CC70 /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0825C1E81E630FEB00D0CC70 /* Decoder.swift */; };
 		0825C1EC1E630FEB00D0CC70 /* Encoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0825C1E91E630FEB00D0CC70 /* Encoder.swift */; };
@@ -30,7 +30,7 @@
 		0825C1D01E630FBA00D0CC70 /* SwiftMsgPack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftMsgPack.h; sourceTree = "<group>"; };
 		0825C1D11E630FBA00D0CC70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0825C1D61E630FBA00D0CC70 /* SwiftMsgPackTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftMsgPackTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		0825C1DB1E630FBA00D0CC70 /* SwiftMsgPackTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftMsgPackTests.swift; sourceTree = "<group>"; };
+		0825C1DB1E630FBA00D0CC70 /* SwiftMsgPackTests_Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftMsgPackTests_Strings.swift; sourceTree = "<group>"; };
 		0825C1DD1E630FBA00D0CC70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0825C1E81E630FEB00D0CC70 /* Decoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Decoder.swift; path = ../Sources/SwiftMsgPack/Decoder.swift; sourceTree = "<group>"; };
 		0825C1E91E630FEB00D0CC70 /* Encoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Encoder.swift; path = ../Sources/SwiftMsgPack/Encoder.swift; sourceTree = "<group>"; };
@@ -87,7 +87,7 @@
 		0825C1DA1E630FBA00D0CC70 /* SwiftMsgPackTests */ = {
 			isa = PBXGroup;
 			children = (
-				0825C1DB1E630FBA00D0CC70 /* SwiftMsgPackTests.swift */,
+				0825C1DB1E630FBA00D0CC70 /* SwiftMsgPackTests_Strings.swift */,
 				0825C1DD1E630FBA00D0CC70 /* Info.plist */,
 			);
 			path = SwiftMsgPackTests;
@@ -96,9 +96,9 @@
 		0825C1E71E630FDB00D0CC70 /* SwiftMsgPack Library */ = {
 			isa = PBXGroup;
 			children = (
-				0825C1E81E630FEB00D0CC70 /* Decoder.swift */,
-				0825C1E91E630FEB00D0CC70 /* Encoder.swift */,
 				0825C1EA1E630FEB00D0CC70 /* Commons.swift */,
+				0825C1E91E630FEB00D0CC70 /* Encoder.swift */,
+				0825C1E81E630FEB00D0CC70 /* Decoder.swift */,
 			);
 			name = "SwiftMsgPack Library";
 			sourceTree = "<group>";
@@ -226,7 +226,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0825C1DC1E630FBA00D0CC70 /* SwiftMsgPackTests.swift in Sources */,
+				0825C1DC1E630FBA00D0CC70 /* SwiftMsgPackTests_Strings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -426,6 +426,7 @@
 				0825C1E31E630FBA00D0CC70 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0825C1E41E630FBA00D0CC70 /* Build configuration list for PBXNativeTarget "SwiftMsgPackTests" */ = {
 			isa = XCConfigurationList;
@@ -434,6 +435,7 @@
 				0825C1E61E630FBA00D0CC70 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
