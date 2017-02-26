@@ -45,6 +45,7 @@ public extension Data {
 	/// - Parameter objects: objects to pack
 	/// - Returns: `self` `(maybe used to chain multiple pack`)
 	/// - Throws: throw an exception if packing fails for some reason
+	@discardableResult
 	public mutating func pack(_ objects: Any?...) throws -> Data {
 		try objects.forEach { try self.pack($0) }
 		return self
