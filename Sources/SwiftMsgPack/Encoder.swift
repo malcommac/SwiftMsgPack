@@ -457,7 +457,7 @@ public extension Data {
 	}
 	
 	
-	/// Write preifx for `Data` based upon the length of the `data` itself
+	/// Write prefix for `Data` based upon the length of the `data` itself
 	///
 	/// - Parameter length: length of data instance you want to write
 	/// - Throws: throw an exception if data is too large

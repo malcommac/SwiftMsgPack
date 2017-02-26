@@ -34,11 +34,11 @@
 import XCTest
 @testable import SwiftMsgPack
 
-extension Data {
-	func hexEncodedString() -> String {
-		return map { String(format: "%02hhx", $0) }.joined()
-	}
-}
+//extension Data {
+//	func hexEncodedString() -> String {
+//		return map { String(format: "%02hhx", $0) }.joined()
+//	}
+//}
 
 class SwiftMsgPackTests_Numeric: XCTestCase {
 	
@@ -150,7 +150,6 @@ class SwiftMsgPackTests_Numeric: XCTestCase {
 		
 		do {
 			try packed.pack(value)
-			print(packed.hexEncodedString())
 			
 			guard packed.count == bytes.count else {
 				XCTFail("[\(testName)] Packed value different from expected data (\(packed.count) bytes, \(bytes.count) expected)")

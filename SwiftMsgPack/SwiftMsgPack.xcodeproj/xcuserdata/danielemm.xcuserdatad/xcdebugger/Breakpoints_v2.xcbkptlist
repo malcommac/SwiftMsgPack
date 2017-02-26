@@ -170,7 +170,7 @@
                   moduleName = "SwiftMsgPack"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/danielemm/Repository/Code/Github/SwiftMsgPack/Sources/SwiftMsgPack/Encoder.swift"
-                  timestampString = "509819275.953821"
+                  timestampString = "509821097.82339"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "246"
@@ -185,7 +185,7 @@
                   moduleName = "SwiftMsgPack"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/danielemm/Repository/Code/Github/SwiftMsgPack/Sources/SwiftMsgPack/Encoder.swift"
-                  timestampString = "509819275.955156"
+                  timestampString = "509821097.82475"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "246"
@@ -193,6 +193,54 @@
                   offsetFromSymbolStart = "699">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Tests/SwiftMsgPackTests/SwiftMsgPackTests_Array.swift"
+            timestampString = "509821096.860529"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "generateTestArray(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Tests/SwiftMsgPackTests/SwiftMsgPackTests_Array.swift"
+            timestampString = "509821096.860529"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "testSmallArray()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Tests/SwiftMsgPackTests/SwiftMsgPackTests_Array.swift"
+            timestampString = "509821096.860529"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "testSmallArray()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
