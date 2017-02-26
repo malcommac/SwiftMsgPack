@@ -20,7 +20,7 @@ Do you like `SwiftMsgPack`? I'm also working on several other opensource librari
 Take a look here:
 
 * **[SwiftDate](https://github.com/malcommac/SwiftDate)** - Date & Timezone management in Swift
-* **[Hydra](https://github.com/malcommac/HydraAsync)** - Promise, Async/Await on sterioids!
+* **[Hydra](https://github.com/malcommac/Hydra)** - Promise, Async/Await on sterioids!
 * **[SwiftLocation](https://github.com/malcommac/SwiftLocation)** - CoreLocation and Beacon Monitoring on steroid!
 * **[SwiftRichString](https://github.com/malcommac/SwiftRichString)** - Elegant and painless attributed string in Swift
 * **[SwiftScanner](https://github.com/malcommac/SwiftScanner)** - String scanner in pure Swift with full unicode support
