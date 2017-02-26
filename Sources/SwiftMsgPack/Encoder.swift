@@ -144,6 +144,10 @@ public extension Data {
 		else if let value_dict = obj as? [AnyHashable: Any?] {
 			try self.pack(dict: value_dict)
 		}
+		// DATA
+		else if let value_data = obj as? Data {
+			try self.pack(data: value_data)
+		}
 			
 		// Not supported fallback
 		else {
@@ -417,7 +421,6 @@ public extension Data {
 	/// - Parameter type: type to write
 	private mutating func writeDataTypeHeader(_ type: MsgPackType) throws {
 		var type_value = try type.value()
-		//print("\(type.description) => \(type_value)")
 		self.append( UnsafeBufferPointer(start: &type_value, count: 1) )
 	}
 	

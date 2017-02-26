@@ -14,6 +14,7 @@
 		0825C1ED1E630FEB00D0CC70 /* Commons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0825C1EA1E630FEB00D0CC70 /* Commons.swift */; };
 		08B92EF51E631C7000B4390A /* SwiftMsgPackTests_String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B92EF41E631C7000B4390A /* SwiftMsgPackTests_String.swift */; };
 		08B92EF71E631D2200B4390A /* SwiftMsgPackTests_BoolNil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B92EF61E631D2200B4390A /* SwiftMsgPackTests_BoolNil.swift */; };
+		08B92EF91E63202F00B4390A /* SwiftMsgPackTests_Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B92EF81E63202F00B4390A /* SwiftMsgPackTests_Data.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +38,7 @@
 		0825C1EA1E630FEB00D0CC70 /* Commons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Commons.swift; path = ../Sources/SwiftMsgPack/Commons.swift; sourceTree = "<group>"; };
 		08B92EF41E631C7000B4390A /* SwiftMsgPackTests_String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftMsgPackTests_String.swift; path = ../../Tests/SwiftMsgPackTests/SwiftMsgPackTests_String.swift; sourceTree = "<group>"; };
 		08B92EF61E631D2200B4390A /* SwiftMsgPackTests_BoolNil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftMsgPackTests_BoolNil.swift; path = ../../Tests/SwiftMsgPackTests/SwiftMsgPackTests_BoolNil.swift; sourceTree = "<group>"; };
+		08B92EF81E63202F00B4390A /* SwiftMsgPackTests_Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftMsgPackTests_Data.swift; path = ../../Tests/SwiftMsgPackTests/SwiftMsgPackTests_Data.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				08B92EF41E631C7000B4390A /* SwiftMsgPackTests_String.swift */,
+				08B92EF81E63202F00B4390A /* SwiftMsgPackTests_Data.swift */,
 				08B92EF61E631D2200B4390A /* SwiftMsgPackTests_BoolNil.swift */,
 				0825C1DD1E630FBA00D0CC70 /* Info.plist */,
 			);
@@ -230,6 +233,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08B92EF91E63202F00B4390A /* SwiftMsgPackTests_Data.swift in Sources */,
 				08B92EF71E631D2200B4390A /* SwiftMsgPackTests_BoolNil.swift in Sources */,
 				08B92EF51E631C7000B4390A /* SwiftMsgPackTests_String.swift in Sources */,
 			);
