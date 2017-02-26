@@ -17,6 +17,7 @@
 		08B92EF91E63202F00B4390A /* SwiftMsgPackTests_Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B92EF81E63202F00B4390A /* SwiftMsgPackTests_Data.swift */; };
 		08B92EFB1E63287D00B4390A /* SwiftMsgPackTests_Numeric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B92EFA1E63287D00B4390A /* SwiftMsgPackTests_Numeric.swift */; };
 		08B92EFD1E6339F300B4390A /* SwiftMsgPackTests_Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B92EFC1E6339F300B4390A /* SwiftMsgPackTests_Array.swift */; };
+		08B92EFF1E6346E900B4390A /* SwiftMsgPackTests_Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B92EFE1E6346E900B4390A /* SwiftMsgPackTests_Dictionary.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,7 @@
 		08B92EF81E63202F00B4390A /* SwiftMsgPackTests_Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftMsgPackTests_Data.swift; path = ../../Tests/SwiftMsgPackTests/SwiftMsgPackTests_Data.swift; sourceTree = "<group>"; };
 		08B92EFA1E63287D00B4390A /* SwiftMsgPackTests_Numeric.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftMsgPackTests_Numeric.swift; path = ../../Tests/SwiftMsgPackTests/SwiftMsgPackTests_Numeric.swift; sourceTree = "<group>"; };
 		08B92EFC1E6339F300B4390A /* SwiftMsgPackTests_Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftMsgPackTests_Array.swift; path = ../../Tests/SwiftMsgPackTests/SwiftMsgPackTests_Array.swift; sourceTree = "<group>"; };
+		08B92EFE1E6346E900B4390A /* SwiftMsgPackTests_Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftMsgPackTests_Dictionary.swift; path = ../../Tests/SwiftMsgPackTests/SwiftMsgPackTests_Dictionary.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 				08B92EF61E631D2200B4390A /* SwiftMsgPackTests_BoolNil.swift */,
 				08B92EFA1E63287D00B4390A /* SwiftMsgPackTests_Numeric.swift */,
 				08B92EFC1E6339F300B4390A /* SwiftMsgPackTests_Array.swift */,
+				08B92EFE1E6346E900B4390A /* SwiftMsgPackTests_Dictionary.swift */,
 				0825C1DD1E630FBA00D0CC70 /* Info.plist */,
 			);
 			path = SwiftMsgPackTests;
@@ -241,6 +244,7 @@
 			files = (
 				08B92EF91E63202F00B4390A /* SwiftMsgPackTests_Data.swift in Sources */,
 				08B92EF71E631D2200B4390A /* SwiftMsgPackTests_BoolNil.swift in Sources */,
+				08B92EFF1E6346E900B4390A /* SwiftMsgPackTests_Dictionary.swift in Sources */,
 				08B92EFB1E63287D00B4390A /* SwiftMsgPackTests_Numeric.swift in Sources */,
 				08B92EFD1E6339F300B4390A /* SwiftMsgPackTests_Array.swift in Sources */,
 				08B92EF51E631C7000B4390A /* SwiftMsgPackTests_String.swift in Sources */,

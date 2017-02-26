@@ -34,7 +34,7 @@
 import XCTest
 @testable import SwiftMsgPack
 
-class SwiftMsgPackTests_Array: XCTestCase {
+class SwiftMsgPackTests_Dictionary: XCTestCase {
 	
 	override func setUp() {
 		super.setUp()
@@ -43,83 +43,81 @@ class SwiftMsgPackTests_Array: XCTestCase {
 	override func tearDown() {
 		super.tearDown()
 	}
-	
-	// MARK: - Test on Array type
-	
-	
-	/// Test small array
-	func testSmallArray() {
-		let len = 15
-		let (array,exp) = generateTestArray(len)
-		performTestOnArray(name: "Test Small Array", value: array, expected: exp)
-	}
-	
-	/// Test medium array
-	func testMediumArray() {
-		let len = UInt16(UInt16.max - 1)
-		let (array,exp) = generateTestArray(Int(len))
-		performTestOnArray(name: "Test Medium Array", value: array, expected: exp)
-	}
-	
-	/// Test long array
-	func testLongArray() {
-		let len = UInt32(UInt16.max) + 1
-		let (array,exp) = generateTestArray(Int(len))
-		performTestOnArray(name: "Test Long Array", value: array, expected: exp)
-	}
-	
-	// MARK: Helper Functions
 
-	/// Generate a Test array and return both it and expected bytes for its packed version
-	///
-	/// - Parameter count: number of items in array
-	/// - Returns: array and expected bytes
-	func generateTestArray(_ count: Int) -> ([Any?],[UInt8]) {
-		var array: [Any?] = []
+	// MARK: - Test on Dictionary type
+	
+	func testSmallDictionary() {
+		let len: Int = 6
+		let (dict,bytes) = generateTestDictionary(len)
+		performTestOnDictionary(name: "Test Small Dictionary", value: dict, expected: bytes)
+	}
+	
+	func testMediumDictionary() {
+		let len = UInt16(UInt16.max - 1)
+		let (dict,bytes) = generateTestDictionary(Int(len))
+		performTestOnDictionary(name: "Test Small Dictionary", value: dict, expected: bytes)
+	}
+	
+	func testLargeDictionary() {
+		let len = UInt32(UInt16.max) + 1
+		let (dict,bytes) = generateTestDictionary(Int(len))
+		performTestOnDictionary(name: "Test Small Dictionary", value: dict, expected: bytes)
+	}
+	
+	// MARK: - Helper Functions
+
+	func generateTestDictionary(_ length: Int) -> ([AnyHashable:Any?],[UInt8]) {
+		var dict: [AnyHashable:Any?] = [:]
 		var bytes: [UInt8] = []
 		
-		// Generate Header for Array
-		if count < 16 {
+		// Dictionary Header
+		if length < 16 {
 			// Header + Length
-			bytes.append(UInt8(0x90 + count))
+			bytes.append(UInt8(0x80 + length))
 		}
-		else if count < Int(UInt16.max) {
+		else if length < Int(UInt16.max) {
 			// Header
-			bytes.append(UInt8(0xdc))
+			bytes.append(UInt8(0xde))
 			// Length (big endian)
-			bytes.append(UInt8((count >> 8) & 0xff))
-			bytes.append(UInt8(count & 0xff))
+			bytes.append(UInt8((length >> 8) & 0xff))
+			bytes.append(UInt8(length & 0xff))
 		}
-		else if count < Int(UInt32.max) {
+		else if length < Int(UInt32.max) {
 			// Header
-			bytes.append(UInt8(0xdd))
+			bytes.append(UInt8(0xdf))
 			// Length (big endian)
-			bytes.append(UInt8((count >> 24) & 0xff))
-			bytes.append(UInt8((count >> 16) & 0xff))
-			bytes.append(UInt8((count >> 8) & 0xff))
-			bytes.append(UInt8(count & 0xff))
+			bytes.append(UInt8((length >> 24) & 0xff))
+			bytes.append(UInt8((length >> 16) & 0xff))
+			bytes.append(UInt8((length >> 8) & 0xff))
+			bytes.append(UInt8(length & 0xff))
 		}
 		
-		// Append items to array
-		for _ in 0..<count {
-			let (generatedItem,itemBytes) = generateRandomArrayType()
-			// Append item to our array
-			array.append(generatedItem)
-			// Add stream to the bytes array
+		for _ in 0..<length {
+			let (key,item,itemBytes) = generateRandomArrayType()
+			dict[key] = item
 			bytes.append(contentsOf: itemBytes)
 		}
 		
-		return (array,bytes)
+		return (dict,bytes)
 	}
-	
 	
 	/// Generate random type and return bytes stream which describe it
 	///
 	/// - Returns: item, byte which describe it
-	func generateRandomArrayType() -> (Any?,[UInt8]) {
+	func generateRandomArrayType() -> (String,Any?,[UInt8]) {
 		let type = randomValue(min: 0, max: 3)
 		var item: Any?
 		var bytes: [UInt8] = []
+		
+		// Key (to simplify we want to limit it, we have already test it in String test)
+		let length_key = randomValue(min: 1, max: 15)
+		let key_value = randomString(length: length_key)
+		let key_header: UInt8 = UInt8(UInt8(0xa0) + UInt8(length_key))
+		let encoded_key = key_value.data(using: String.Encoding.utf8)!
+		bytes.append(key_header)
+		bytes.append(contentsOf: [UInt8](encoded_key))
+		
+		// Value
 		
 		// Just to test some types
 		switch type {
@@ -153,9 +151,10 @@ class SwiftMsgPackTests_Array: XCTestCase {
 		default:
 			break
 		}
-
-		return (item,bytes)
+		
+		return (key_value,item,bytes)
 	}
+	
 	
 	/// Generate a random string with passed length
 	///
@@ -184,31 +183,7 @@ class SwiftMsgPackTests_Array: XCTestCase {
 		return Int(arc4random_uniform(UInt32(max) - UInt32(min)) + UInt32(min))
 	}
 	
-	func performTestOnArray(name testName: String, value: [Any?], expected bytes: [UInt8]) {
-		var packed = Data()
+	func performTestOnDictionary(name testName: String, value: [AnyHashable:Any?], expected bytes: [UInt8]) {
 		
-		do {
-			try packed.pack(value)
-			
-			guard packed.count == bytes.count else {
-				XCTFail("[\(testName)] Pack failed because number of bytes is different from expected: \(packed.count), \(bytes.count) expected")
-				return
-			}
-			
-			var idx = 0
-			for byte in packed {
-				guard byte == bytes[idx] else {
-					XCTFail("[\(testName)] Byte \(idx) is different from expected (\(byte), \(bytes[idx]) expected")
-					return
-				}
-				idx += 1
-			}
-			
-			
-		} catch let err {
-			// Something went wrong while packing data
-			XCTFail("[\(testName)] Failed to pack Array: \(err) (src='\(value)')")
-			return
-		}
 	}
 }
