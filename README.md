@@ -158,3 +158,5 @@ This software uses open source SwiftMsgPack's library to manage MsgPack data.
 Web: http://github.com/malcommac/SwiftMsgPack.
 Created by Daniele Margutti and licensed under MIT License.
 ```
+
+msgpack.org[SwiftMsgPack]
