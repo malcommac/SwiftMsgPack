@@ -125,10 +125,10 @@ public enum MsgPackType: CustomStringConvertible {
 			else if count < Int(UInt16.max) { // 16 bit length
 				return try MsgPackType.array16.value()
 			}
-			else if count < Int(UInt32.max) { // 32 bit length
+			else { //if count < Int(UInt32.max) { // 32 bit length
 				return try MsgPackType.array32.value()
 			}
-			throw MsgPackError.dataIsTooBig("Array is too big: \(count) items")
+			//throw MsgPackError.dataIsTooBig("Array is too big: \(count) items")
 			
 		// string
 		case .fixstr:				return UInt8(0xa0)			// fixstr	101xxxxx	0xa0 - 0xbf
@@ -145,11 +145,11 @@ public enum MsgPackType: CustomStringConvertible {
 				// str 16	11011010	0xda
 				return UInt8(0xda)
 			}
-			else if length < Int(UInt32.max) {
+			else { //if length < Int(UInt32.max) {
 				// str 32	11011011	0xdb
 				return UInt8(0xdb)
 			}
-			throw MsgPackError.dataIsTooBig("String is too long: \(length) chars")
+			//throw MsgPackError.dataIsTooBig("String is too long: \(length) chars")
 
 		// dictionaries
 		case .fixdict(let count):	return UInt8(0x80 + count)	// fixmap	1000xxxx	0x80 - 0x8f
@@ -162,10 +162,10 @@ public enum MsgPackType: CustomStringConvertible {
 			else if count < Int(UInt16.max) { // 16 bit
 				return try MsgPackType.dict16.value()
 			}
-			else if count < Int(UInt32.max) { // 32 bit
+			else { //if count < Int(UInt32.max) { // 32 bit
 				return try MsgPackType.dict32.value()
 			}
-			throw MsgPackError.dataIsTooBig("Dictionary is too big: \(count) keys")
+			//throw MsgPackError.dataIsTooBig("Dictionary is too big: \(count) keys")
 
 		// nil values
 		case .nil:					return UInt8(0xc0)

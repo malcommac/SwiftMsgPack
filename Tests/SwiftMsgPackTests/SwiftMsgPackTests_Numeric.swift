@@ -55,17 +55,22 @@ class SwiftMsgPackTests_Numeric: XCTestCase {
 	func testUInt8() {
 		performTestUInt8(name: "Test UInt8 #1", value: UInt8(0), expected: [0])
 		performTestUInt8(name: "Test UInt8 #2", value: UInt8(0xC), expected: [0xC])
-		performTestUInt8(name: "Test UInt8 #3", value: UInt8.max, expected: [0xcc, UInt8.max])
+		performTestUInt8(name: "Test UInt8 #3", value: UInt8(0x81), expected: [0xcc, 0x81])
+		performTestUInt8(name: "Test UInt8 #4", value: UInt8.max, expected: [0xcc, UInt8.max])
 	}
 	
 	// MARK: - Int8
 	
 	func testInt8() {
 		performTestInt8(name: "Test Int8 #1", value: Int8.min, expected: [0xd0, 0x80])
-		performTestInt8(name: "Test Int8 #2", value: (Int8.min + 2), expected: [0xd0, 0x82])
-		performTestInt8(name: "Test Int8 #3", value: Int8(-33), expected: [0xd0, 0xdf])
-		performTestInt8(name: "Test Int8 #4", value: Int8(-32), expected: [0xe0])
-		performTestInt8(name: "Test Int8 #5", value: Int8.max, expected: [0x7f])
+		performTestInt8(name: "Test Int8 #2", value: (Int8.min + 1), expected: [0xd0, 0x81])
+		performTestInt8(name: "Test Int8 #3", value: (Int8.min + 2), expected: [0xd0, 0x82])
+		performTestInt8(name: "Test Int8 #4", value: Int8(-33), expected: [0xd0, 0xdf])
+		performTestInt8(name: "Test Int8 #5", value: Int8(-32), expected: [0xe0])
+		performTestInt8(name: "Test Int8 #6", value: Int8(-1), expected: [0xff])
+		performTestInt8(name: "Test Int8 #7", value: Int8(0), expected: [0])
+		performTestInt8(name: "Test Int8 #8", value: Int8.max - 1, expected: [0x7e])
+		performTestInt8(name: "Test Int8 #9", value: Int8.max, expected: [0x7f])
 	}
 	
 	// MARK: - UInt16
@@ -84,6 +89,19 @@ class SwiftMsgPackTests_Numeric: XCTestCase {
 		performTestInt16(name: "Test Int16 #2", value: Int16(-33), expected:  [0xd0, 0xdf])
 		performTestInt16(name: "Test Int16 #3", value: Int16(0), expected: [0])
 		performTestInt16(name: "Test Int16 #4", value: Int16(Int8.max - 1), expected: [0x7e])
+		performTestInt16(name: "Test Int16 #5", value: Int16.min + 1, expected: [0xd1, 0x80, 0x01])
+		performTestInt16(name: "Test Int16 #6", value: Int16(Int8.min) - 1, expected: [0xd1, 0xff, 0x7f])
+		performTestInt16(name: "Test Int16 #7", value: Int16(Int8.min), expected: [0xd0, 0x80])
+		performTestInt16(name: "Test Int16 #8", value: Int16(Int8.min + 1), expected: [0xd0, 0x81])
+		performTestInt16(name: "Test Int16 #9", value: Int16(-33), expected: [0xd0, 0xdf])
+		performTestInt16(name: "Test Int16 #10", value: Int16(-32), expected: [0xe0])
+		performTestInt16(name: "Test Int16 #11", value: Int16(-1), expected: [0xff])
+		performTestInt16(name: "Test Int16 #12", value: Int16(0), expected: [0])
+		performTestInt16(name: "Test Int16 #13", value: Int16(Int8.max - 1), expected: [0x7e])
+		performTestInt16(name: "Test Int16 #14", value: Int16(Int8.max), expected: [0x7f])
+		performTestInt16(name: "Test Int16 #15", value: Int16(Int8.max) + 1, expected: [0xcc, 0x80])
+		performTestInt16(name: "Test Int16 #16", value: Int16.max - 1, expected: [0xd1, 0x7f, 0xfe])
+		performTestInt16(name: "Test Int16 #17", value: Int16.max, expected: [0xd1, 0x7f, 0xff])
 	}
 	
 	// MARK: - UInt32
@@ -93,7 +111,12 @@ class SwiftMsgPackTests_Numeric: XCTestCase {
 		performTestUInt32(name: "Test UInt32 #2", value: UInt32(UInt8.max), expected: [0xcc, UInt8.max])
 		performTestUInt32(name: "Test UInt32 #3", value: UInt32.max - 1, expected: [0xce, 0xff, 0xff, 0xff, 0xfe])
 		performTestUInt32(name: "Test UInt32 #4", value: UInt32.max, expected: [0xce, 0xff, 0xff, 0xff, 0xff])
-	}
+		performTestUInt32(name: "Test UInt32 #5", value: UInt32(UInt8.max), expected: [0xcc, UInt8.max])
+		performTestUInt32(name: "Test UInt32 #6", value: UInt32(UInt8.max) + 1, expected: [0xcd, 0x01, 0x0])
+		performTestUInt32(name: "Test UInt32 #7", value: UInt32(Int16.max) - 1, expected: [0xcd, 0x7f, 0xfe])
+		performTestUInt32(name: "Test UInt32 #8", value: UInt32(Int16.max), expected: [0xcd, 0x7f, 0xff])
+		performTestUInt32(name: "Test UInt32 #9", value: UInt32(Int16.max) + 1, expected: [0xcd, 0x80, 0x0])
+}
 	
 	// MARK: - Int32
 	
@@ -104,6 +127,12 @@ class SwiftMsgPackTests_Numeric: XCTestCase {
 		performTestInt32(name: "Test Int32 #4", value: Int32(Int8.max - 1), expected: [0x7e])
 		performTestInt32(name: "Test Int32 #5", value: Int32(Int16.max), expected: [0xd1, 0x7f, 0xff])
 		performTestInt32(name: "Test Int32 #6", value: Int32.max, expected: [0xd2, 0x7f, 0xff, 0xff, 0xff])
+		performTestInt32(name: "Test Int32 #7", value: Int32.max - 1, expected: [0xd2, 0x7f, 0xff, 0xff, 0xfe])
+		performTestInt32(name: "Test Int32 #8", value: Int32(Int16.max) + 1, expected: [0xcd, 0x80, 0])
+		performTestInt32(name: "Test Int32 #9", value: Int32(-33), expected: [0xd0, 0xdf])
+		performTestInt32(name: "Test Int32 #10", value: Int32(-32), expected: [0xe0])
+		performTestInt32(name: "Test Int32 #11", value: Int32(-1), expected: [0xff])
+		performTestInt32(name: "Test Int32 #12", value: Int32(Int8.max), expected: [0x7f])
 	}
 	
 	// MARK: - UInt64
@@ -113,17 +142,43 @@ class SwiftMsgPackTests_Numeric: XCTestCase {
 		performTestUInt64(name: "Test UInt64 #2", value: UInt64(0x81), expected: [0xcc, 0x81])
 		performTestUInt64(name: "Test UInt64 #3", value: UInt64.max, expected: [0xcf, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
 		                                                                        0xff])
-		performTestUInt64(name: "Test UInt64 #4", value: UInt64(Int32.max), expected: [0xd2, 0x7f, 0xff, 0xff, 0xff])
+		performTestUInt64(name: "Test UInt64 #5", value: UInt64(Int32.max) + 1, expected: [0xce, 0x80, 0x0, 0x0, 0x0])
+		performTestUInt64(name: "Test UInt64 #6", value: UInt64.max - 1, expected: [0xcf, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+		                                                                            0xfe])
+		performTestUInt64(name: "Test UInt64 #7", value: UInt64.max, expected: [0xcf, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+		                                                                            0xff])
+		performTestUInt64(name: "Test UInt64 #7", value: UInt64(Int32.max), expected: [0xce, 0x7f, 0xff, 0xff, 0xff])
 	}
 	
 	// MARK: - Int64
 	
 	func testInt64() {
 		performTestInt64(name: "Test Int64 #1", value: Int64.min, expected: [0xd3, 0x80, 0, 0, 0, 0, 0, 0, 0])
-		performTestInt64(name: "Test Int64 #2", value: Int64(Int32.min), expected: [0xd2, 0x80, 0, 0, 0])
-		performTestInt64(name: "Test Int64 #3", value: Int64(Int8.max), expected: [0x7f])
-		performTestInt64(name: "Test Int64 #4", value: Int64.max, expected: [0xd3, 0x7f, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+		performTestInt64(name: "Test Int64 #2", value: Int64.min + 1, expected: [0xd3, 0x80, 0, 0, 0, 0, 0, 0, 0x01])
+		performTestInt64(name: "Test Int64 #3", value: Int64(Int32.min) - 1, expected: [0xd3, 0xff, 0xff, 0xff, 0xff, 0x7f, 0xff, 0xff,
+		                                                                                0xff])
+		performTestInt64(name: "Test Int64 #4", value: Int64(Int32.min), expected: [0xd2, 0x80, 0, 0, 0])
+		performTestInt64(name: "Test Int64 #5", value: Int64(Int32.min) + 1, expected: [0xd2, 0x80, 0, 0, 0x01])
+		performTestInt64(name: "Test Int64 #6", value: Int64(Int16.min) - 1, expected: [0xd2, 0xff, 0xff, 0x7f, 0xff])
+		performTestInt64(name: "Test Int64 #7", value: Int64(Int16.min), expected: [0xd1, 0x80, 0])
+		performTestInt64(name: "Test Int64 #8", value: Int64(Int16.min) + 1, expected: [0xd1, 0x80, 0x01])
+		performTestInt64(name: "Test Int64 #10", value: Int64(Int8.min), expected: [0xd0, 0x80])
+		performTestInt64(name: "Test Int64 #11", value: Int64(Int8.min) - 1, expected: [0xd1, 0xff, 0x7f])
+		performTestInt64(name: "Test Int64 #12", value: Int64(Int8.min) + 1, expected: [0xd0, 0x81])
+		performTestInt64(name: "Test Int64 #13", value: Int64(Int8.max), expected: [0x7f])
+		
+		performTestInt64(name: "Test Int64 #14", value: Int64(Int8.max - 1), expected: [0x7e])
+		performTestInt64(name: "Test Int64 #15", value: Int64(Int8.max), expected: [0x7f])
+		performTestInt64(name: "Test Int64 #16", value: Int64(Int8.max) + 1, expected: [0xcc, 0x80])
+		performTestInt64(name: "Test Int64 #17", value: Int64(Int16.max) - 1, expected: [0xd1, 0x7f, 0xfe])
+		performTestInt64(name: "Test Int64 #18", value: Int64(Int16.max), expected: [0xd1, 0x7f, 0xff])
+		performTestInt64(name: "Test Int64 #19", value: Int64(Int16.max) + 1, expected: [0xcd, 0x80, 0])
+		
+		performTestInt64(name: "Test Int64 #20", value: Int64.max, expected: [0xd3, 0x7f, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
 		                                                                     0xff])
+		performTestInt64(name: "Test Int64 #21", value: Int64.max - 1, expected: [0xd3, 0x7f, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+		                                                                         0xfe])
+
 	}
 	
 	// MARK: - Float

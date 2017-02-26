@@ -78,16 +78,20 @@ public extension Data {
 		
 		// UNSIGNED INT
 		else if let value_u8 = obj as? UInt8 { // 8 BIT
-			try self.pack(signedInt: Int(value_u8))
+			//try self.pack(signedInt: Int(value_u8))
+			try self.pack(unsignedInt: UInt64(value_u8))
 		}
 		else if let value_u16 = obj as? UInt16 { // 16 BIT
-			try self.pack(signedInt: Int(value_u16))
+			//try self.pack(signedInt: Int(value_u16))
+			try self.pack(unsignedInt: UInt64(value_u16))
 		}
 		else if let value_u32 = obj as? UInt32 { // 32 BIT
-			try self.pack(signedInt: Int(value_u32))
+			//try self.pack(signedInt: Int(value_u32))
+			try self.pack(unsignedInt: UInt64(value_u32))
 		}
 		else if let value_u64 = obj as? UInt64 { // 64 BIT
-			try self.pack(unsignedInt: UInt(value_u64))
+			//try self.pack(unsignedInt: UInt(value_u64))
+			try self.pack(unsignedInt: value_u64)
 		}
 			
 			
@@ -120,7 +124,8 @@ public extension Data {
 		}
 		// UNSIGNED INT
 		else if let value_uint = obj as? UInt {
-			try self.pack(unsignedInt: value_uint)
+			//try self.pack(unsignedInt: value_uint)
+			try self.pack(unsignedInt: UInt64(value_uint))
 		}
 			
 			
@@ -208,17 +213,37 @@ public extension Data {
 	/// - Returns: the instance of `self` modified with the packed data
 	/// - Throws: throw an exception if value cannot be encoded because is too large to be contained in a MsgPack message
 	@discardableResult
-	private mutating func pack(unsignedInt value: UInt) throws -> Data {
-		if value >= (UInt(Int64.max) + 1) && value <= UInt(UInt64.max) { // Can be packed as unsigned int
-			// Write Header
+	private mutating func pack(unsignedInt value: UInt64) throws -> Data {
+		switch value {
+		case 0...127:
+			try self.writeDataTypeHeader(.pFixInt8(value: Int(value)))
+			
+		case UInt64(UInt8.min)...UInt64(UInt8.max):
+			try self.writeDataTypeHeader(.uInt8)
+			
+			var data = UInt8(value)
+			self.append(UnsafeBufferPointer(start: &data, count: 1))
+			
+		case UInt64(UInt16.min)...UInt64(UInt16.max):
+			try self.writeDataTypeHeader(.uInt16)
+			
+			var data = UInt16(value).bigEndian
+			self.append(UnsafeBufferPointer(start: &data, count: 1))
+			
+		case UInt64(UInt32.min)...UInt64(UInt32.max):
+			try self.writeDataTypeHeader(.uInt32)
+			
+			var data = UInt32(value).bigEndian
+			self.append(UnsafeBufferPointer(start: &data, count: 1))
+			
+		default:
 			try self.writeDataTypeHeader(.uInt64)
 			// Write value
 			var data = UInt64(value).bigEndian
 			self.append(UnsafeBufferPointer(start: &data, count: 1))
-			return self
 		}
-		// Otherwise pack it as signed int
-		return try pack(signedInt: Int(value))
+		
+		return self
 	}
 	
 	// MARK: - Pack Int
@@ -231,21 +256,6 @@ public extension Data {
 	@discardableResult
 	private mutating func pack(signedInt value: Int) throws -> Data {
 		switch value {
-			
-		// POSITIVE INT 64 BIT
-		case ( Int(UInt32.max) + 1)...Int(Int64.max):
-			try self.writeDataTypeHeader(.int64)
-			
-			var data = UInt64(value).bigEndian
-			self.append(UnsafeBufferPointer(start: &data, count: 1))
-			
-		// INSIGNED INT 32 BIT
-		case (Int(Int32.max) + 1)...Int(UInt32.max):
-			try self.writeDataTypeHeader(.uInt32)
-			
-			var data = UInt32(value).bigEndian
-			self.append(UnsafeBufferPointer(start: &data, count: 1))
-			
 		// POSITIVE INT 32 BIT
 		case (Int(UInt16.max) + 1)...Int(Int32.max):
 			try self.writeDataTypeHeader(.int32)
@@ -303,16 +313,12 @@ public extension Data {
 			var data = UInt32(bitPattern: Int32(value)).bigEndian
 			self.append(UnsafeBufferPointer(start: &data, count: 1))
 		
-		// NEGATIVE INT 64 BIT
-		case Int(Int64.min)...(Int(Int32.min) - 1):
-			try self.writeDataTypeHeader(.nInt64)
-
+		// INT 64 BIT
+		default:
+			try self.writeDataTypeHeader(.int64)
+			
 			var data = UInt64(bitPattern: Int64(value)).bigEndian
 			self.append(UnsafeBufferPointer(start: &data, count: 1))
-		
-		// UNSUPPORTED VALUE
-		default:
-			throw MsgPackError.unsupportedValue("Int(\(value))")
 		}
 		
 		return self
@@ -374,7 +380,8 @@ public extension Data {
 	@discardableResult
 	private mutating func pack(array value: [Any?]) throws -> Data {
 		
-		guard value.count < Int(UInt32.max) else {
+		guard value.count < Int(bitPattern: UInt(UInt32.max)) else {
+		//guard value.count < Int(UInt32.max) else {
 			// Array is too large to be included in a MsgPack data
 			throw MsgPackError.dataIsTooBig("Array is too big: \(value.count) items")
 		}
@@ -398,7 +405,8 @@ public extension Data {
 	@discardableResult
 	private mutating func pack(dict value: [AnyHashable:Any?]) throws -> Data {
 		
-		guard value.count < Int(UInt32.max) else {
+		guard value.count < Int(bitPattern: UInt(UInt32.max)) else {
+//		guard value.count < Int(UInt32.max) else {
 			// Dictionary is too large to be contained in a MsgPack data
 			throw MsgPackError.dataIsTooBig("Dictionary is too big: \(value.count) items")
 		}
@@ -443,7 +451,7 @@ public extension Data {
 		} else if length < Int(UInt16.max) {
 			var data_len = UInt16(length).bigEndian
 			self.append(UnsafeBufferPointer(start: &data_len, count: 1))
-		} else if length < Int(UInt32.max) {
+		} else { //if length < Int(UInt32.max) {
 			var data_len = UInt32(length).bigEndian
 			self.append(UnsafeBufferPointer(start: &data_len, count: 1))
 		}
@@ -462,7 +470,7 @@ public extension Data {
 		} else if length < Int(UInt16.max) {
 			var data_len = UInt16(length).bigEndian
 			self.append(UnsafeBufferPointer(start: &data_len, count: 1))
-		} else if length < Int(UInt32.max) {
+		} else { //if length < Int(UInt32.max) {
 			var data_len = UInt32(length).bigEndian
 			self.append(UnsafeBufferPointer(start: &data_len, count: 1))
 		}
@@ -486,7 +494,7 @@ public extension Data {
 			var len_data = UInt16(length).bigEndian
 			self.append(UnsafeBufferPointer(start: &len_data, count: 1))
 		}
-		else if length < Int(UInt32.max) {
+		else { //if length < Int(UInt32.max) {
 			var len_data = UInt32(length).bigEndian
 			self.append(UnsafeBufferPointer(start: &len_data, count: 1))
 		}
@@ -513,7 +521,7 @@ public extension Data {
 			self.append(UnsafeBufferPointer(start: &data_len, count: 1))
 		}
 			// 32 BIT LENGTH
-		else if length < Int(UInt32.max) {
+		else { // if length < Int(UInt32.max) {
 			try self.writeDataTypeHeader(.bin32)
 			
 			var data_len = UInt32(length).bigEndian
