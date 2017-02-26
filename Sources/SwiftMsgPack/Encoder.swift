@@ -379,7 +379,7 @@ public extension Data {
 		}
 		
 		// Write the header of the array
-		try self.writeDataTypeHeader(.array(items: value.count))
+		try self.writeHeader(forArray: value.count)
 		// Let's encode each data contained in it
 		try value.forEach {
 			try self.pack($0)
@@ -403,7 +403,7 @@ public extension Data {
 		}
 		
 		// Write the header for dictionary
-		try self.writeDataTypeHeader(.dict(items: value.count))
+		try self.writeHeader(forDictionary: value.count)
 		
 		// Let's encode each `{value,key}` inside
 		for (k,v) in value {
@@ -432,6 +432,41 @@ public extension Data {
 		self.append(data)
 	}
 	
+	
+	private mutating func writeHeader(forDictionary length: Int) throws {
+		// Write header
+		try self.writeDataTypeHeader(.dict(items: length))
+		
+		// Write length if necessary
+		if length < 16 {
+		} else if length < Int(UInt16.max) {
+			var data_len = UInt16(length).bigEndian
+			self.append(UnsafeBufferPointer(start: &data_len, count: 1))
+		} else if length < Int(UInt32.max) {
+			var data_len = UInt32(length).bigEndian
+			self.append(UnsafeBufferPointer(start: &data_len, count: 1))
+		}
+	}
+	
+	/// Write header for 'Array' storage
+	///
+	/// - Parameter length: number of items in array
+	/// - Throws: throw an exception if data is too large
+	private mutating func writeHeader(forArray length: Int) throws {
+		// Write header
+		try self.writeDataTypeHeader(.array(items: length))
+
+		// Write length if necessary
+		if length < 16 {
+		} else if length < Int(UInt16.max) {
+			var data_len = UInt16(length).bigEndian
+			self.append(UnsafeBufferPointer(start: &data_len, count: 1))
+		} else if length < Int(UInt32.max) {
+			var data_len = UInt32(length).bigEndian
+			self.append(UnsafeBufferPointer(start: &data_len, count: 1))
+		}
+
+	}
 	
 	/// Write prefix for `String` based upon the length of the string itself
 	///

@@ -46,18 +46,22 @@ class SwiftMsgPackTests_Array: XCTestCase {
 	
 	// MARK: - Test on Array type
 	
+	
+	/// Test small array
 	func testSmallArray() {
-		let len = 6
+		let len = 15
 		let (array,exp) = generateTestArray(len)
 		performTestOnArray(name: "Test Small Array", value: array, expected: exp)
 	}
 	
+	/// Test medium array
 	func testMediumArray() {
 		let len = UInt16(UInt16.max - 1)
 		let (array,exp) = generateTestArray(Int(len))
 		performTestOnArray(name: "Test Medium Array", value: array, expected: exp)
 	}
 	
+	/// Test long array
 	func testLongArray() {
 		let len = UInt32(UInt16.max) + 1
 		let (array,exp) = generateTestArray(Int(len))
@@ -109,7 +113,7 @@ class SwiftMsgPackTests_Array: XCTestCase {
 	///
 	/// - Returns: item, byte which describe it
 	func generateRandomArrayType() -> (Any?,[UInt8]) {
-		let type = randomValue(min: 0, max: 3)
+		let type = randomValue(min: 0, max: 1)
 		var item: Any?
 		var bytes: [UInt8] = []
 		
