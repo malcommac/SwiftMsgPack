@@ -77,7 +77,7 @@ private struct StreamReader {
 	/// - Returns: value read
 	/// - Throws: throw an exception if data cannot be read or it's not available
 	mutating func read16Bit() throws -> UInt16 {
-		guard index + 2 < data.count else {
+		guard index + 2 <= data.count else {
 			throw MsgPackError.unexpectedData
 		}
 		let value_int16 = UInt16(data[Data.Index(index)]) << 8 + UInt16(data[Data.Index(index + 1)])
@@ -90,7 +90,7 @@ private struct StreamReader {
 	/// - Returns: value read
 	/// - Throws: throw an exception if data cannot be read or it's not available
 	mutating func read32Bit() throws -> UInt32 {
-		guard index + 4 < data.count else {
+		guard index + 4 <= data.count else {
 			throw MsgPackError.unexpectedData
 		}
 		var value_int32: UInt32 = 0
@@ -106,7 +106,7 @@ private struct StreamReader {
 	/// - Returns: value read
 	/// - Throws: throw an exception if data cannot be read or it's not available
 	mutating func read64Bit() throws -> UInt64 {
-		guard index + 8 < data.count else {
+		guard index + 8 <= data.count else {
 			throw MsgPackError.unexpectedData
 		}
 		var value_int64: UInt64 = 0
@@ -262,7 +262,8 @@ public extension Data {
 		// INT 8 BIT
 		// int 8	11010000	0xd0
 		case 0xd0:
-			return Int8(Int(try stream.read8Bit()))
+			let value = try stream.read8Bit()
+			return Int8(Int(value) - 256)
 		
 		// INT 16 BIT
 		// int 16	11010001	0xd1

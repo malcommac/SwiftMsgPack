@@ -107,7 +107,7 @@ public extension Data {
 			
 		// DOUBLE
 		else if let value_double = obj as? Double {
-			try self.pack(value_double)
+			try self.pack(double: value_double)
 		}
 		// FLOAT
 		else if let value_float = obj as? Float {
