@@ -125,12 +125,12 @@ Add swiftline as dependency in your `Package.swift`
 
 ## Requirements
 
-Current version is compatible with:
+Current version is compatible **only with 64-BIT architectures** with:
 
 * Swift 3.0+
-* iOS 8.0 or later
+* iOS 9.0 or later
 * tvOS 9.0 or later
-* macOS 10.9 or later
+* macOS 10.10 or later
 * Linux compatible environments
 
 <a name="credits" />
