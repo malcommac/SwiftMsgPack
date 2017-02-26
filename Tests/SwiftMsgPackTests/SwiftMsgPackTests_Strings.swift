@@ -66,20 +66,29 @@ class SwiftMsgPackTests: XCTestCase {
 		
 		// Append correct header to the start of bytes sequence
 		if length < 32 {
+			// Header + Length
 			bytes.append(UInt8(0xa0 + length))
 		}
 		else if length < Int(UInt8.max) {
+			// Header
 			bytes.append(UInt8(0xd9))
+			
+			// Length of the data
+			bytes.append(UInt8(length))
 		}
 		else if length < Int(UInt16.max) {
+			// Header
 			bytes.append(UInt8(0xda))
 			
+			// Length of the data
 			bytes.append(UInt8((length >> 8) & 0xff))
 			bytes.append(UInt8(length & 0xff))
 		}
 		else if length < Int(UInt32.max) {
+			// Header
 			bytes.append(UInt8(0xdb))
 			
+			// Length of the data
 			bytes.append(UInt8((length >> 24) & 0xff))
 			bytes.append(UInt8((length >> 16) & 0xff))
 			bytes.append(UInt8((length >> 8) & 0xff))

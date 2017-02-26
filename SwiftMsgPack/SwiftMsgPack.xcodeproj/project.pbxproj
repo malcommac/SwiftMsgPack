@@ -8,11 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		0825C1D71E630FBA00D0CC70 /* SwiftMsgPack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0825C1CD1E630FBA00D0CC70 /* SwiftMsgPack.framework */; };
-		0825C1DC1E630FBA00D0CC70 /* SwiftMsgPackTests_Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0825C1DB1E630FBA00D0CC70 /* SwiftMsgPackTests_Strings.swift */; };
 		0825C1DE1E630FBA00D0CC70 /* SwiftMsgPack.h in Headers */ = {isa = PBXBuildFile; fileRef = 0825C1D01E630FBA00D0CC70 /* SwiftMsgPack.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0825C1EB1E630FEB00D0CC70 /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0825C1E81E630FEB00D0CC70 /* Decoder.swift */; };
 		0825C1EC1E630FEB00D0CC70 /* Encoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0825C1E91E630FEB00D0CC70 /* Encoder.swift */; };
 		0825C1ED1E630FEB00D0CC70 /* Commons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0825C1EA1E630FEB00D0CC70 /* Commons.swift */; };
+		08B92EF51E631C7000B4390A /* SwiftMsgPackTests_Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B92EF41E631C7000B4390A /* SwiftMsgPackTests_Strings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,11 +30,11 @@
 		0825C1D01E630FBA00D0CC70 /* SwiftMsgPack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftMsgPack.h; sourceTree = "<group>"; };
 		0825C1D11E630FBA00D0CC70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0825C1D61E630FBA00D0CC70 /* SwiftMsgPackTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftMsgPackTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		0825C1DB1E630FBA00D0CC70 /* SwiftMsgPackTests_Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftMsgPackTests_Strings.swift; sourceTree = "<group>"; };
 		0825C1DD1E630FBA00D0CC70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0825C1E81E630FEB00D0CC70 /* Decoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Decoder.swift; path = ../Sources/SwiftMsgPack/Decoder.swift; sourceTree = "<group>"; };
 		0825C1E91E630FEB00D0CC70 /* Encoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Encoder.swift; path = ../Sources/SwiftMsgPack/Encoder.swift; sourceTree = "<group>"; };
 		0825C1EA1E630FEB00D0CC70 /* Commons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Commons.swift; path = ../Sources/SwiftMsgPack/Commons.swift; sourceTree = "<group>"; };
+		08B92EF41E631C7000B4390A /* SwiftMsgPackTests_Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftMsgPackTests_Strings.swift; path = ../../Tests/SwiftMsgPackTests/SwiftMsgPackTests_Strings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,7 +87,7 @@
 		0825C1DA1E630FBA00D0CC70 /* SwiftMsgPackTests */ = {
 			isa = PBXGroup;
 			children = (
-				0825C1DB1E630FBA00D0CC70 /* SwiftMsgPackTests_Strings.swift */,
+				08B92EF41E631C7000B4390A /* SwiftMsgPackTests_Strings.swift */,
 				0825C1DD1E630FBA00D0CC70 /* Info.plist */,
 			);
 			path = SwiftMsgPackTests;
@@ -172,6 +172,7 @@
 					0825C1D51E630FBA00D0CC70 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = E5DU3FA699;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -226,7 +227,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0825C1DC1E630FBA00D0CC70 /* SwiftMsgPackTests_Strings.swift in Sources */,
+				08B92EF51E631C7000B4390A /* SwiftMsgPackTests_Strings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -385,11 +386,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = E5DU3FA699;
 				INFOPLIST_FILE = SwiftMsgPackTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mokasw.SwiftMsgPackTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -398,6 +401,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = E5DU3FA699;
 				INFOPLIST_FILE = SwiftMsgPackTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

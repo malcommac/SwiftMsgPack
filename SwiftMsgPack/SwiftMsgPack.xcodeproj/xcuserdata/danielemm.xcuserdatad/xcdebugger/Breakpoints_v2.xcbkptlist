@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "SwiftMsgPackTests/SwiftMsgPackTests_Strings.swift"
-            timestampString = "509811286.413973"
+            filePath = "../Sources/SwiftMsgPack/Decoder.swift"
+            timestampString = "509811640.731736"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
-            landmarkName = "generateTestString(_:)"
+            startingLineNumber = "331"
+            endingLineNumber = "331"
+            landmarkName = "unpack(stream:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
