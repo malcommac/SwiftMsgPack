@@ -346,7 +346,6 @@ public extension Data {
 			guard let key = try self.unpack(stream: &stream) as? AnyHashable else {
 				throw MsgPackError.unsupportedValue("Invalid dict key")
 			}
-			print(key)
 			let val = try self.unpack(stream: &stream)
 			dict[key] = val
 		}
