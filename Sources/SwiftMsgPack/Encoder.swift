@@ -380,7 +380,7 @@ public extension Data {
 	@discardableResult
 	private mutating func pack(array value: [Any?]) throws -> Data {
 		
-		guard value.count < Int(bitPattern: UInt(UInt32.max)) else {
+		guard UInt32(bitPattern: Int32(value.count)) < UInt32.max else {
 		//guard value.count < Int(UInt32.max) else {
 			// Array is too large to be included in a MsgPack data
 			throw MsgPackError.dataIsTooBig("Array is too big: \(value.count) items")
@@ -405,7 +405,7 @@ public extension Data {
 	@discardableResult
 	private mutating func pack(dict value: [AnyHashable:Any?]) throws -> Data {
 		
-		guard value.count < Int(bitPattern: UInt(UInt32.max)) else {
+		guard UInt32(bitPattern: Int32(value.count)) < UInt32.max else {
 //		guard value.count < Int(UInt32.max) else {
 			// Dictionary is too large to be contained in a MsgPack data
 			throw MsgPackError.dataIsTooBig("Dictionary is too big: \(value.count) items")
