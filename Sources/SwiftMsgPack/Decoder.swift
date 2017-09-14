@@ -297,10 +297,10 @@ public extension Data {
 		// STRING 32 BIT LENGTH
 		// str 32	11011011	0xdb
 		case 0xdb:
-			let len_data =  Int(try stream.read8Bit()) << 24 +
-							Int(try stream.read8Bit()) << 16 +
-							Int(try stream.read8Bit()) << 8 +
-							Int(try stream.read8Bit())
+			var len_data = Int(try stream.read8Bit()) << 24
+			len_data += Int(try stream.read8Bit()) << 16
+			len_data += Int(try stream.read8Bit()) << 8
+			len_data += Int(try stream.read8Bit())
 			return try unpack(string: &stream, length: len_data)
 
 			
