@@ -4,7 +4,19 @@
 
 ## CHANGELOG
 
+* Version **[1.0.0](#100)**
 * Version **[0.9.0](#090)**
+
+<a name="100" />
+
+## SwiftMsgPack 1.0.0
+---
+- **Release Date**: 2017/09/14
+- **Zipped Version**: [Download 1.0.0](https://github.com/malcommac/SwiftMsgPack/releases/tag/1.0.0)
+
+Swift 4 compatible version
+
+<a name="090" />
 
 ## SwiftMsgPack 0.9.0
 ---

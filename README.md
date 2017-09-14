@@ -39,7 +39,9 @@ Take a look here:
 
 ## Current Release
 
-Latest release is: 0.9.1 [Download here](https://github.com/malcommac/SwiftMsgPack/releases/tag/0.9.1).
+* **Swift 4.x**: Latest is 1.0.0 [Download here](https://github.com/malcommac/SwiftMsgPack/releases/tag/1.0.0).
+* **Swift 3.x**: Last is 0.9.1 [Download here](https://github.com/malcommac/SwiftMsgPack/releases/tag/0.9.1).
+
 A complete list of changes for each release is available in the [CHANGELOG](CHANGELOG.md) file.
 
 <a name="howto" />
@@ -136,7 +138,7 @@ Tests can also be runned with XCode using the SwiftMsgPack project.
 
 Current version is compatible with:
 
-* Swift 3.0+
+* Swift 4.x+ (Swift 3.x up to 0.9.1)
 * iOS 9.0 or later
 * tvOS 9.0 or later
 * macOS 10.10 or later
