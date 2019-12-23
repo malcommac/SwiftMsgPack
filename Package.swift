@@ -3,6 +3,9 @@ import PackageDescription
 
 let package = Package(
     name: "SwiftMsgPack",
+    products: [
+        .library(name: "SwiftMsgPack", targets: ["SwiftMsgPack"])
+    ],
     targets: [
         .target(name: "SwiftMsgPack")
     ]
