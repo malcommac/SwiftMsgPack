@@ -127,7 +127,7 @@ private struct StreamReader {
 		guard index + length <= data.count else {
 			throw MsgPackError.unexpectedData
 		}
-		let range = Range(index..<(index + length))
+		let range = index ..< (index + length)
 		index += length
 		return data.subdata(in: range)
 	}
@@ -144,7 +144,7 @@ public extension Data {
 	///
 	/// - Returns: decoded data
 	/// - Throws: an error if decoding task cannot be finished correctly due to an error
-	public func unpack() throws -> Any? {
+    func unpack() throws -> Any? {
 		// Create a reader which has a point to the current position in data instance
 		// and several help functions to read data
 		var reader = StreamReader(self)
