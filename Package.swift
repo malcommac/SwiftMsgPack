@@ -7,6 +7,10 @@ let package = Package(
         .library(name: "SwiftMsgPack", targets: ["SwiftMsgPack"])
     ],
     targets: [
-        .target(name: "SwiftMsgPack")
+        .target(name: "SwiftMsgPack"),
+        .testTarget(
+            name: "SwiftMsgPackTests",
+            dependencies: ["SwiftMsgPack"]
+        ),
     ]
 )
