@@ -180,7 +180,7 @@ class SwiftMsgPackTests_String: XCTestCase {
 				XCTFail("[\(testName)] Failed to cast unpacked data to a valid String instance")
 				return
 			}
-			guard str_value.characters.count == value.characters.count else {
+			guard str_value.count == value.count else {
 				XCTFail("[\(testName)] Unpacked string has a different number of characters than source")
 				return
 			}
