@@ -95,7 +95,7 @@ class SwiftMsgPackTests_Data: XCTestCase {
 		// Append real data
 		bytes.append(contentsOf: data_sequence)
 		// Get generated data
-		let data = Data(bytes: data_sequence)
+		let data = Data(data_sequence)
 		return (data,bytes)
 	}
 	

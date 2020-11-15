@@ -88,7 +88,7 @@ class SwiftMsgPackTests_BoolNil: XCTestCase {
 			
 		} catch let err {
 			// Something went wrong while packing data
-			XCTFail("[\(testName)] Failed to pack nil: \(err) (src='\(value)')")
+            XCTFail("[\(testName)] Failed to pack nil: \(err) (src='\(String(describing: value))')")
 			return
 		}
 	}
