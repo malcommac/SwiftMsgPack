@@ -1,52 +1,35 @@
 <p align="center" >
-  <img src="https://raw.githubusercontent.com/malcommac/SwiftMsgPack/develop/logo.png" width=210px height=204px alt="SwiftMsgPack" title="SwiftMsgPack">
+  <img src="banner.png" width=300px alt="SwiftLocation" title="SwiftLocation">
 </p>
+
+<p align="center"><strong>It's like JSON, but faster!</strong></p>
+<p align="center">Made with ♥ in pure Swift, no dependencies, lightweight & fully portable</p>
+
 
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![CI Status](https://travis-ci.org/malcommac/SwiftMsgPack.svg)](https://travis-ci.org/malcommac/SwiftMsgPack) [![Version](https://img.shields.io/cocoapods/v/SwiftMsgPack.svg?style=flat)](http://cocoadocs.org/docsets/SwiftMsgPack) [![License](https://img.shields.io/cocoapods/l/SwiftMsgPack.svg?style=flat)](http://cocoadocs.org/docsets/SwiftMsgPack) [![Platform](https://img.shields.io/cocoapods/p/SwiftMsgPack.svg?style=flat)](http://cocoadocs.org/docsets/SwiftMsgPack)
 
-<p align="center" >MsgPack for Swift... Its' like JSON <a href="http://theburningmonk.com/2011/12/performance-test-binary-serializers-part-ii/"> but faster</a><br/>
-Made with ♥ in pure Swift, no dependencies, lightweight & fully portable
-<p/>
-<p align="center" >★★ <b>Star our github repository to help us!</b> ★★</p>
-<p align="center" >Created by <a href="http://www.danielemargutti.com">Daniele Margutti</a> (<a href="http://www.twitter.com/danielemargutti">@danielemargutti</a>)</p>
+## What's this?
 
-[MessagePack](http://msgpack.org/) is an efficient binary serialization format, which lets you exchange data among multiple languages like JSON, except that it's faster and smaller. Small integers are encoded into a single byte while typical short strings require only one extra byte in addition to the strings themselves.
+[MessagePack](http://msgpack.org/) is an efficient binary serialization format, which lets you exchange data among multiple languages like JSON, except that it's [faster and smaller](http://theburningmonk.com/2011/12/performance-test-binary-serializers-part-ii/"> but faster). Small integers are encoded into a single byte while typical short strings require only one extra byte in addition to the strings themselves.
 You can read more about [specs directly from the main web](https://github.com/msgpack/msgpack/blob/master/spec.md) site.
 
-## OTHER LIBRARIES YOU MAY LIKE
+## Your Support
 
-I'm also working on several other projects you may like.
-Take a look below:
+*Hi fellow developer!*  
+You know, maintaing and developing tools consumes resources and time. While I enjoy making them **your support is foundamental to allow me continue its development**.  
 
-<p align="center" >
+If you are using SwiftLocation or any other of my creations please consider the following options:
 
-| Library         | Description                                      |
-|-----------------|--------------------------------------------------|
-| [**SwiftDate**](https://github.com/malcommac/SwiftDate)       | The best way to manage date/timezones in Swift   |
-| [**Hydra**](https://github.com/malcommac/Hydra)           | Write better async code: async/await & promises  |
-| [**Flow**](https://github.com/malcommac/Flow) | A new declarative approach to table managment. Forget datasource & delegates. |
-| [**SwiftRichString**](https://github.com/malcommac/SwiftRichString) | Elegant & Painless NSAttributedString in Swift   |
-| [**SwiftLocation**](https://github.com/malcommac/SwiftLocation)   | Efficient location manager                       |
-| [**SwiftMsgPack**](https://github.com/malcommac/SwiftMsgPack)    | Fast/efficient msgPack encoder/decoder           |
-</p>
+- [**Make a donation with PayPal**](https://www.paypal.com/paypalme/danielemargutti/20)
+- [**Become a Sponsor**](https://github.com/sponsors/malcommac)
+
+- [⭐️ Follow Me & Discover Other Projects](https://github.com/malcommac)
 
 ## Index
-* **[Current Release](#release)**
 * **[How to use](#howto)**
 * **[Supported Types](#supportedtypes)**
 * **[Installation (CocoaPods, SwiftPM and Carthage)](#installation)**
 * **[Tests](#tests)**
-* **[Requirements](#requirements)**
-* **[Credits](#credits)**
-
-<a name="release" />
-
-## Current Release
-
-* **Swift 4.x**: Latest is 1.0.0 [Download here](https://github.com/malcommac/SwiftMsgPack/releases/tag/1.0.0).
-* **Swift 3.x**: Last is 0.9.1 [Download here](https://github.com/malcommac/SwiftMsgPack/releases/tag/0.9.1).
-
-A complete list of changes for each release is available in the [CHANGELOG](CHANGELOG.md) file.
 
 <a name="howto" />
 
@@ -69,6 +52,7 @@ do {
 	print("Something went wrong while packing data: \(error)")	
 }
 ```
+
 Deserializing data is pretty simple too, just call `unpack` function to an instance of `Data` with msgpack data:
 
 ```swift
@@ -136,33 +120,23 @@ SwiftMsgPack has an extensive coverage using XCTest.
 You can found a complete list of tests inside `Tests/SwiftMsgPackTests` folder.
 Tests can also be runned with XCode using the SwiftMsgPack project.
 
-<a name="requirements" />
-
-## Requirements
-
-Current version is compatible with:
-
-* Swift 4.x+ (Swift 3.x up to 0.9.1)
-* iOS 9.0 or later
-* tvOS 9.0 or later
-* macOS 10.10 or later
-* Linux compatible environments
-
 <a name="credits" />
 
-## Credits & License
-SwiftMsgPack is owned and maintained by [Daniele Margutti](http://www.danielemargutti.com/).
+## Contributing
 
-As open source creation any help is welcome!
+- If you **need help** or you'd like to **ask a general question**, open an issue.
+- If you **found a bug**, open an issue.
+- If you **have a feature request**, open an issue.
+- If you **want to contribute**, submit a pull request.
 
-The code of this library is licensed under MIT License; you can use it in commercial products without any limitation.
+## Copyright & Acknowledgements
 
-The only requirement is to add a line in your Credits/About section with the text below:
+SwiftLocation is currently owned and maintained by Daniele Margutti.  
+You can follow me on Twitter [@danielemargutti](http://twitter.com/danielemargutti).  
+My web site is [https://www.danielemargutti.com](https://www.danielemargutti.com) 
 
-```
-This software uses open source SwiftMsgPack's library to manage MsgPack data.
-Web: http://github.com/malcommac/SwiftMsgPack.
-Created by Daniele Margutti and licensed under MIT License.
-```
+This software is licensed under [MIT License](LICENSE.md).
 
-msgpack.org[SwiftMsgPack]
+***Follow me on:***  
+- 💼 [Linkedin](https://www.linkedin.com/in/danielemargutti/)  
+- 🐦 [Twitter](https://twitter.com/danielemargutti)
