@@ -46,7 +46,7 @@ public extension Data {
 	/// - Returns: `self` `(maybe used to chain multiple pack`)
 	/// - Throws: throw an exception if packing fails for some reason
 	@discardableResult
-	public mutating func pack(_ objects: Any?...) throws -> Data {
+    mutating func pack(_ objects: Any?...) throws -> Data {
 		try objects.forEach { try self.pack($0) }
 		return self
 	}
@@ -62,7 +62,7 @@ public extension Data {
 	/// - Returns: `self` `(maybe used to chain multiple pack`)
 	/// - Throws: throw an exception if packing fails for some reason
 	@discardableResult
-	public mutating func pack(_ obj: Any?) throws -> Data {
+	mutating func pack(_ obj: Any?) throws -> Data {
 		
 		guard let obj = obj else {
 			// If the object is nil we want to write the nil
@@ -200,7 +200,7 @@ public extension Data {
 	/// - Parameter bool: boolean value to pack
 	/// - Returns: the instance of `self` modified with the packed data
 	@discardableResult
-	public mutating func pack(boolean bool: Bool) throws -> Data {
+	mutating func pack(boolean bool: Bool) throws -> Data {
 		try self.writeDataTypeHeader(.boolean(bool))
 		return self
 	}

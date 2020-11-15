@@ -13,18 +13,22 @@ Made with ♥ in pure Swift, no dependencies, lightweight & fully portable
 [MessagePack](http://msgpack.org/) is an efficient binary serialization format, which lets you exchange data among multiple languages like JSON, except that it's faster and smaller. Small integers are encoded into a single byte while typical short strings require only one extra byte in addition to the strings themselves.
 You can read more about [specs directly from the main web](https://github.com/msgpack/msgpack/blob/master/spec.md) site.
 
-## You also may like
+## OTHER LIBRARIES YOU MAY LIKE
 
-Do you like `SwiftMsgPack`? I'm also working on several other opensource libraries.
+I'm also working on several other projects you may like.
+Take a look below:
 
-Take a look here:
+<p align="center" >
 
-* **[SwiftDate](https://github.com/malcommac/SwiftDate)** - Date & Timezone management in Swift
-* **[Hydra](https://github.com/malcommac/Hydra)** - Promise, Async/Await on sterioids!
-* **[SwiftLocation](https://github.com/malcommac/SwiftLocation)** - CoreLocation and Beacon Monitoring on steroid!
-* **[SwiftRichString](https://github.com/malcommac/SwiftRichString)** - Elegant and painless attributed string in Swift
-* **[SwiftScanner](https://github.com/malcommac/SwiftScanner)** - String scanner in pure Swift with full unicode support
-* **[SwiftSimplify](https://github.com/malcommac/SwiftSimplify)** - Tiny high-performance Swift Polyline Simplification Library
+| Library         | Description                                      |
+|-----------------|--------------------------------------------------|
+| [**SwiftDate**](https://github.com/malcommac/SwiftDate)       | The best way to manage date/timezones in Swift   |
+| [**Hydra**](https://github.com/malcommac/Hydra)           | Write better async code: async/await & promises  |
+| [**Flow**](https://github.com/malcommac/Flow) | A new declarative approach to table managment. Forget datasource & delegates. |
+| [**SwiftRichString**](https://github.com/malcommac/SwiftRichString) | Elegant & Painless NSAttributedString in Swift   |
+| [**SwiftLocation**](https://github.com/malcommac/SwiftLocation)   | Efficient location manager                       |
+| [**SwiftMsgPack**](https://github.com/malcommac/SwiftMsgPack)    | Fast/efficient msgPack encoder/decoder           |
+</p>
 
 ## Index
 * **[Current Release](#release)**
