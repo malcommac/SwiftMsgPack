@@ -3,15 +3,15 @@
 </p>
 
 <p align="center"><strong>It's like JSON, but faster!</strong></p>
-<p align="center">Made with ♥ in pure Swift, no dependencies, lightweight & fully portable</p>
 
 
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![CI Status](https://travis-ci.org/malcommac/SwiftMsgPack.svg)](https://travis-ci.org/malcommac/SwiftMsgPack) [![Version](https://img.shields.io/cocoapods/v/SwiftMsgPack.svg?style=flat)](http://cocoadocs.org/docsets/SwiftMsgPack) [![License](https://img.shields.io/cocoapods/l/SwiftMsgPack.svg?style=flat)](http://cocoadocs.org/docsets/SwiftMsgPack) [![Platform](https://img.shields.io/cocoapods/p/SwiftMsgPack.svg?style=flat)](http://cocoadocs.org/docsets/SwiftMsgPack)
 
 ## What's this?
 
-[MessagePack](http://msgpack.org/) is an efficient binary serialization format, which lets you exchange data among multiple languages like JSON, except that it's [faster and smaller](http://theburningmonk.com/2011/12/performance-test-binary-serializers-part-ii/"> but faster). Small integers are encoded into a single byte while typical short strings require only one extra byte in addition to the strings themselves.
-You can read more about [specs directly from the main web](https://github.com/msgpack/msgpack/blob/master/spec.md) site.
+[MessagePack](http://msgpack.org/) is an efficient binary serialization format, which lets you exchange data among multiple languages like JSON, except that it's [faster and smaller](http://theburningmonk.com/2011/12/performance-test-binary-serializers-part-ii). Small integers are encoded into a single byte while typical short strings require only one extra byte in addition to the strings themselves.  
+You can read more about [specs directly from the main web](https://github.com/msgpack/msgpack/blob/master/spec.md) site.  
+Moreover it's made in pure Swift, no dependencies, lightweight & fully portable
 
 ## Your Support
 
@@ -43,13 +43,13 @@ It's pretty easy, take a look here:
 ```swift
 var data = Data()
 do {
-	let obj1 = "Hello World"
-	let obj2 = 45.5
-	let obj3: [AnyHashable:Any?] = [ "key_1" : "value test","key_2" : 4,"key_3" : true, otherHashableKey: "value1"]
-	// Now you can pack your instances by passing them to pack function
-	try data.pack(obj1,obj2,obj3)
+  let obj1 = "Hello World"
+  let obj2 = 45.5
+  let obj3: [AnyHashable:Any?] = [ "key_1" : "value test","key_2" : 4,"key_3" : true, otherHashableKey: "value1"]
+  // Now you can pack your instances by passing them to pack function
+  try data.pack(obj1,obj2,obj3)
 } catch {
-	print("Something went wrong while packing data: \(error)")	
+  print("Something went wrong while packing data: \(error)")
 }
 ```
 
@@ -60,7 +60,7 @@ let data: Data = // msgpack data...
 do {
   let decodedObj: Any? = try data.unpack()
 } catch {
-	print("Something went wrong while unpacking data: \(error)")	
+  print("Something went wrong while unpacking data: \(error)")
 }
 ```
 
@@ -103,13 +103,13 @@ You can install Swiftline using CocoaPods, carthage and Swift package manager
 Add swiftline as dependency in your `Package.swift`
 
 ```
-  import PackageDescription
+import PackageDescription
 
-  let package = Package(name: "YourPackage",
-    dependencies: [
-      .Package(url: "https://github.com/malcommac/SwiftMsgPack.git", majorVersion: 0),
-    ]
-  )
+let package = Package(name: "YourPackage",
+  dependencies: [
+    .Package(url: "https://github.com/malcommac/SwiftMsgPack.git", majorVersion: 0),
+  ]
+)
 ```
 
 <a name="tests" />
