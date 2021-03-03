@@ -154,10 +154,10 @@ public extension Data {
 		else if let value_data = obj as? Data {
 			try self.pack(data: value_data)
 		}
-        // NULL (Objective-C)
-        else if obj is NSNull {
-            try self.writeDataTypeHeader(.nil)
-        }
+		// NULL (Objective-C)
+		else if obj is NSNull {
+			try self.writeDataTypeHeader(.nil)
+		}
 			
 		// Not supported fallback
 		else {
